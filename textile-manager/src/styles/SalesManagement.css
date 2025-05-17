@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #1e40af;
+  --success: #22c55e;
+  --success-hover: #16a34a;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --warning: #f59e0b;
+  --warning-hover: #d97706;
+  --background: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border: #d1d5db;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --orange: #ff9300; /* Orange color for branding */
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+  color: var(--text-primary);
+}
+
+.sales-management {
+  padding: 2rem;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  /* 3D Background with layered gradient */
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #f3f4f6 100%);
+}
+
+/* Add a pseudo-element for 3D depth */
+.sales-management::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1), transparent 70%);
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+  opacity: 0.5;
+  z-index: -1;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Animation for the pseudo-element to create a floating effect */
+@keyframes float {
+  0% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: perspective(1000px) rotateX(12deg) rotateY(12deg) translateZ(50px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(0);
+    opacity: 0.5;
+  }
+}
+
+/* Existing animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Header */
+.sales-management h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--primary);
+  animation: fadeIn 0.8s ease;
+  position: relative;
+  z-index: 1; /* Ensure header is above the background */
+}
+
+/* Action Buttons */
+.sales-management .flex > button {
+  background: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  z-index: 1; /* Ensure buttons are above the background */
+}
+
+.sales-management .flex > button:nth-of-type(2) {
+  background: var(--success);
+}
+
+.sales-management .flex > button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  animation: pulse 0.3s ease;
+}
+
+.sales-management .flex > button:nth-of-type(2):hover {
+  background: var(--success-hover);
+}
+
+/* Form */
+.form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  margin: 2rem 0;
+  animation: scaleIn 0.3s ease;
+  position: relative;
+  z-index: 1; /* Ensure form is above the background */
+}
+
+.form .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form input:focus,
+.form select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+.form input[name="amount"] {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.form button {
+  background: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  justify-self: center;
+  margin-top: 1rem;
+}
+
+.form button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Chart */
+.charts {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  margin: 2rem 0;
+  animation: slideIn 0.5s ease;
+  position: relative;
+  z-index: 1; /* Ensure charts are above the background */
+}
+
+.chart-container {
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+/* Sales Table */
+.sales-table {
+  margin-top: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 1; /* Ensure table is above the background */
+}
+
+.sales-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.sales-table th,
+.sales-table td {
+  padding: 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.sales-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sales-table tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.sales-table button {
+  background: var(--warning);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.sales-table button:hover {
+  background: var(--warning-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+/* Bill Section (Invoice) */
+.bill {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  animation: scaleIn 0.3s ease;
+  border: 1px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 1; /* Ensure bill is above the background */
+}
+
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--orange);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.seller-details h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+
+.seller-details p,
+.buyer-details p,
+.payment-info p {
+  font-size: 0.9rem;
+  color: #1f2937;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.invoice-details h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.invoice-details p {
+  font-size: 0.9rem;
+  color: #1f2937;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.buyer-details h4,
+.payment-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0.75rem;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.items-table th,
+.items-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid #000000;
+}
+
+.items-table th {
+  background-color: #fff7ed; /* Light orange background for headers */
+  font-weight: 600;
+  color: var(--orange);
+}
+
+.items-table td {
+  color: #000000;
+  font-weight: 400;
+}
+
+.items-table tr:last-child td {
+  font-weight: 600;
+  background-color: #f3f4f6;
+}
+
+.bill-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid var(--orange);
+  padding-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.payment-info ul li {
+  font-size: 0.85rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.total-amount h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.total-amount p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.bill-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.bill-actions button {
+  padding: 10px 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bill-actions button:first-child {
+  background: var(--primary);
+  color: white;
+}
+
+.bill-actions button:nth-child(2) {
+  background: #4f46e5;
+  color: white;
+}
+
+.bill-actions button:last-child {
+  background: var(--danger);
+  color: white;
+}
+
+.bill-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sales-management {
+    padding: 1rem;
+  }
+
+  .sales-management h2 {
+    font-size: 2rem;
+  }
+
+  .form .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .charts .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-table table,
+  .sales-table thead,
+  .sales-table tbody,
+  .sales-table tr,
+  .sales-table th,
+  .sales-table td {
+    display: block;
+  }
+
+  .sales-table th {
+    display: none;
+  }
+
+  .sales-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    position: relative;
+  }
+
+  .sales-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 0 0 40%;
+  }
+
+  .bill {
+    padding: 1.5rem;
+  }
+
+  .bill-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .invoice-details {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .bill-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .total-amount {
+    margin-top: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .bill, .bill * {
+    visibility: visible;
+  }
+  .bill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 15mm;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    background: #ffffff;
+  }
+  .bill-actions {
+    display: none !important;
+  }
+}

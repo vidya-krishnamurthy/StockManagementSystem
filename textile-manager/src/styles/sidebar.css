@@ -1,0 +1,83 @@
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Sidebar container */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%); /* Gradient background */
+  height: 100vh;
+  color: white;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Sidebar title */
+.sidebar h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-align: center;
+  background: linear-gradient(90deg, #ffffff, #d1d5db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradient text effect */
+}
+
+/* Navigation links */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space for icons */
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect for links */
+.sidebar a:hover {
+  background-color: #34495e;
+  color: white;
+  transform: translateX(5px); /* Subtle slide effect on hover */
+}
+
+/* Active link styling */
+.sidebar a.active {
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3); /* Subtle glow for active link */
+}
+
+/* Add icons to links (optional, if you add icons in JSX) */
+.sidebar a::before {
+  font-family: 'FontAwesome'; /* If using FontAwesome for icons */
+  margin-right: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+  }
+
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .sidebar a {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}

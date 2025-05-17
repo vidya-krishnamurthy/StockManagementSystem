@@ -1,0 +1,252 @@
+/* ========== BASE STYLES ========== */
+.yarn-container {
+  --primary: #4f46e5; /* Indigo for primary actions */
+  --primary-hover: #4338ca;
+  --accent: #ec4899; /* Pink for secondary actions */
+  --accent-hover: #db2777;
+  --success: #22c55e;
+  --success-hover: #16a34a;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --background: #f9fafb; /* Light gray background */
+  --card-bg: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+              url('https://www.keralatourism.org/images/enchanting_kerala/large/kasavu20200908051932_1021_1.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.yarn-container h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.yarn-container h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 2rem 0 1rem;
+}
+
+/* ========== FORM STYLES ========== */
+.yarn-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(2px); /* Slight blur for better contrast */
+}
+
+.yarn-form input {
+  padding: 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.yarn-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background: #ffffff;
+}
+
+.yarn-form input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* ========== BUTTON STYLES ========== */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+
+button {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button[type="submit"] {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+button[type="submit"]:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+button[type="button"] {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+button[type="button"]:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.delete-btn {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========== TABLE STYLES ========== */
+.yarn-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px); /* Slight blur for better contrast */
+}
+
+.yarn-table thead {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.yarn-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.yarn-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.yarn-table tr:last-child td {
+  border-bottom: none;
+}
+
+.yarn-table tr:hover {
+  background: #f3f4f6;
+}
+
+.yarn-table button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* ========== STATUS MESSAGES ========== */
+.error-message {
+  padding: 1rem;
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+.success-message {
+  padding: 1rem;
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ========== LOADING STATES ========== */
+.yarn-container p {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 2rem 0;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 768px) {
+  .yarn-container {
+    padding: 1rem;
+  }
+
+  .yarn-form {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .yarn-table {
+    min-width: 100%;
+  }
+
+  .yarn-table th,
+  .yarn-table td {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .yarn-table th,
+  .yarn-table td {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .yarn-table button {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+}

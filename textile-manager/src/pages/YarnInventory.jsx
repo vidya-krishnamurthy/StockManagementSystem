@@ -24,7 +24,7 @@ const YarnInventory = () => {
   const fetchYarns = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/yarns");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/yarns`);
       setYarns(res.data);
       setError("");
     } catch (err) {
@@ -57,7 +57,7 @@ const YarnInventory = () => {
       
       if (editingId) {
         // Update existing yarn - ensure this matches your backend route
-        await axios.put(`http://localhost:5000/api/yarns/${editingId}`, {
+        await axios.put(`${import.meta.env.VITE_API_URL}/api/yarns/${editingId}`, {
           yarnType,
           quantity: Number(quantity),
           supplier
@@ -65,7 +65,7 @@ const YarnInventory = () => {
         setSuccess("Yarn updated successfully!");
       } else {
         // Add new yarn
-        await axios.post("http://localhost:5000/api/yarns", {
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/yarns`, {
           yarnType,
           quantity: Number(quantity),
           supplier
@@ -100,7 +100,7 @@ const YarnInventory = () => {
 
     try {
       setIsLoading(true);
-      await axios.delete(`http://localhost:5000/api/yarns/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/yarns/${id}`);
       setSuccess("Yarn deleted successfully!");
       fetchYarns();
     } catch (err) {

@@ -8,7 +8,7 @@ const EmployeeManagement = () => {
   const [activityLog, setActivityLog] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/employees')
+    fetch(`${import.meta.env.VITE_API_URL}/api/employees`)
       .then(res => res.json())
       .then(data => setEmployees(data))
       .catch(err => console.error('Error fetching employees:', err));
@@ -35,7 +35,7 @@ const EmployeeManagement = () => {
     if (!newEmployee.name || !newEmployee.role || !newEmployee.contact) return;
 
     try {
-      const res = await fetch('http://localhost:5000/api/employees', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/employees`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newEmployee),
@@ -52,7 +52,7 @@ const EmployeeManagement = () => {
   // Handle deleting an employee
   const handleDeleteEmployee = async (id, name, role) => {
     try {
-      await fetch(`http://localhost:5000/api/employees/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/employees/${id}`, {
         method: 'DELETE',
       });
       setEmployees(employees.filter(employee => employee._id !== id));

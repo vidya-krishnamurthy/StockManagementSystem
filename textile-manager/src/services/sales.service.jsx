@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authHeader from './authHeader';
 
-const API_URL = 'http://localhost:5000/api/sales/';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/sales/`;
 
 const getAllSales = () => {
   return axios.get(API_URL, { headers: authHeader() });

@@ -148,7 +148,7 @@ const SalesManagement = () => {
   });
 
   useEffect(() => {
-    axios.get('/api/sales')
+    axios.get(`${import.meta.env.VITE_API_URL}/api/sales`)
       .then(res => setSales(res.data))
       .catch(err => console.error("Error fetching sales:", err));
   }, []);
@@ -181,7 +181,7 @@ const SalesManagement = () => {
     };
 
     try {
-      const res = await axios.post('/api/sales', newEntry);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/sales`, newEntry);
       setSales([...sales, res.data]);
       setNewSale({
         customer: '',

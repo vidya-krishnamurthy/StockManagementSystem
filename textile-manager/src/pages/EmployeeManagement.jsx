@@ -3,14 +3,10 @@ import { FaTrash, FaUserPlus } from 'react-icons/fa';
 import '../styles/EmployeeManagement.css';
 
 const EmployeeManagement = () => {
-  // State for employees
   const [employees, setEmployees] = useState([]);
-  // State for new employee form
   const [newEmployee, setNewEmployee] = useState({ name: '', role: '', contact: '', shift: 'Day' });
-  // State for activity log
   const [activityLog, setActivityLog] = useState([]);
 
-  // Fetch employees from backend on component mount
   useEffect(() => {
     fetch('http://localhost:5000/api/employees')
       .then(res => res.json())
@@ -18,12 +14,13 @@ const EmployeeManagement = () => {
       .catch(err => console.error('Error fetching employees:', err));
   }, []);
 
-  // Add activity to log
+
   const addActivity = (message) => {
     setActivityLog((prev) => [
       { id: prev.length + 1, message, timestamp: new Date().toLocaleString() },
       ...prev,
-    ].slice(0, 5)); // Keep only the last 5 activities
+    ].slice(0, 5)); 
+    
   };
 
   // Handle form input changes
